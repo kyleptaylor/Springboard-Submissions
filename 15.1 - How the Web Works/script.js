@@ -17,6 +17,8 @@
 
 // 1. Using ***curl***, make a ***GET*** request to the *icanhazdadjoke.com* API to find all jokes involving the word “pirate”
 // 2. Use ***dig*** to find what the IP address is for *icanhazdadjoke.com*
+    // 172.67.198.173
+    // 104.21.66.15
 // 3. Make a simple web page and serve it using ***python3 -m http.server***. Visit the page in a browser.
 
 
@@ -27,6 +29,7 @@
 // Add a field or two to the form and, after submitting it, explore in Chrome Developer tools how you can view the request and response headers.
 
 // Edit the page to change the form type to POST, refresh in the browser and re-submit. Do you still see the field in the query string? Explore in Chrome how you can view the request and response headers, as well as the form data.
+
 
 // ## **Part Four: Explore the URL API**
 
