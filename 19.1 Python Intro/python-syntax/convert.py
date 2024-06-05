@@ -15,7 +15,22 @@ def convert_temp(unit_in, unit_out, temp):
       convert_temp("f", "c", 212) => 100.0
     """
 
-    # YOUR CODE HERE
+    valid_units = ["c","f"]
+
+    if unit_in not in valid_units:
+        return f"Invalid unit {unit_in}"
+    if unit_out not in valid_units:
+        return f"Invalid unit {unit_out}"
+
+    if unit_in == "f" and unit_out == "c":
+        return (temp - 32) * 5/9
+    elif unit_in == "c" and unit_out == "f":
+        return (temp * 9/5) + 32
+    else:
+        return temp
+    
+# Fahrenheit to Celsius, subtract 30 then divide by 2.
+# Celsius to Fahrenheit, multiply by 2 then add 30.
 
 
 print("c", "f", 0, convert_temp("c", "f", 0), "should be 32.0")
