@@ -16,3 +16,4 @@ def number_compare(a, b):
         return 'Second is greater'
     elif a > b:
         return 'First is greater'
+    
