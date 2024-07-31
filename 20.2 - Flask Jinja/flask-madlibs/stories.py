@@ -43,11 +43,11 @@ class Story:
 #     """Once upon a time in a long-ago {place}, there lived a large {adjective} {noun}. It loved to {verb} {plural_noun}."""
 # )
 
-# story = Story(
-#     ["celebrity", "noun", "verb", "adjective", "animal", "place", "plural_noun", "silly_word"],
-#     """In the mystical land of {place}, the famous {celebrity} stumbled upon a {adjective} {noun}. 
-#     To their surprise, the {noun} could {verb} and spoke in {silly_word}. 
-#     Together, they embarked on a quest to find the legendary {plural_noun} guarded by a giant {animal}. 
-#     Along the way, they encountered a talking tree that only communicated through interpretive dance and a village of gnomes who worshiped rubber ducks."""
-# )
+story = Story(
+    ["celebrity", "noun", "verb", "adjective", "animal", "place", "plural_noun", "silly_word"],
+    """In the mystical land of {place}, the famous {celebrity} stumbled upon a {adjective} {noun}. 
+    To their surprise, the {noun} could {verb} and spoke in {silly_word}. 
+    Together, they embarked on a quest to find the legendary {plural_noun} guarded by a giant {animal}. 
+    Along the way, they encountered a talking tree that only communicated through interpretive dance and a village of gnomes who worshiped rubber ducks."""
+)
 
