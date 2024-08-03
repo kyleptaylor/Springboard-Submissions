@@ -11,6 +11,11 @@ class Question:
         self.choices = choices
         self.allow_text = allow_text
 
+    def __repr__(self):
+        return f"<Question: {self.question}>"
+    
+    def __str__(self):
+        return f"Question: {self.question}\nChoices: {', '.join(self.choices)}"
 
 class Survey:
     """Questionnaire."""
