@@ -31,7 +31,6 @@ def show_survey_questions(survey_type, question_num):
     
     if 'responses' not in session:
         session['responses'] = []
-    
     responses = session['responses']
     if len(responses) != question_num:
         flash('Yoooouuu shall not pass!!!', 'error')
