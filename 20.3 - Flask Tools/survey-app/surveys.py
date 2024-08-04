@@ -27,7 +27,6 @@ class Survey:
         self.instructions = instructions
         self.questions = questions
 
-
 satisfaction_survey = Survey(
     "Customer Satisfaction Survey",
     "Please fill out a survey about your experience with us.",
@@ -53,7 +52,20 @@ personality_quiz = Survey(
     ]
 )
 
+employee_engagement_survey = Survey(
+    "Employee Engagement Survey",
+    "We value your feedback. Please fill out this survey to help us improve our workplace.",
+    [
+        Question("Do you feel valued at work?"),
+        Question("Do you have the tools and resources to do your job effectively?"),
+        Question("How likely are you to recommend this company to a friend?",
+                 ["Very likely", "Somewhat likely", "Not likely"]),
+        Question("What can we do to improve your work experience?", allow_text=True),
+    ]
+)
+
 surveys = {
     "satisfaction": satisfaction_survey,
     "personality": personality_quiz,
+    "employee": employee_engagement_survey
 }

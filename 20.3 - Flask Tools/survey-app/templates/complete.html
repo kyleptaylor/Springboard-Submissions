@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+<!---->
+{% block title %} Survey Complete {% endblock %}
+
+<!---->
+{% block content %}
+
+<h1>Survey Complete!</h1>
+<p>Thank you for completing the {{ survey_type|title }} survey</p>
+{% for survey in surveys %}
+
+<a href="/survey/{{ survey }}">{{ survey }}</a>
+
+{% endfor %}
+<!---->
+{% endblock %}

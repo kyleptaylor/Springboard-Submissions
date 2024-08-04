@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% content block %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/app.css" />
   </head>
   <body>
-    {% block content %}{% end block %}
+    <nav>
+      <a href="/">🏄‍♂️ Surfey</a>
+    </nav>
+    <section class="main-section">
+      <!---->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      <!---->
+      {% if messages %}
+      <ul id="flashes">
+        <p id="close-flashes">&#x2715;</p>
+        {% for category, message in messages %}
+        <!---->
+        <li class="{{ category }}">{{ message }}</li>
+        <!---->
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <!---->
+      {% endwith %}
+      <!---->
+      {% block content %}
+      <!---->
+      {% endblock %}
+    </section>
+    <!---->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 </html>

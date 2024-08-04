@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Original+Surfer&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  background-color: #c7d2d2;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: calc(100vw - 20px);
+  max-width: 1000px;
+  height: 50px;
+  background-color: #2d2a28;
+  color: #c7d2d2;
+  margin: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+nav a {
+  font-family: "Original Surfer", "roboto", sans-serif;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: #c7d2d2;
+}
+
+.main-section {
+  position: relative;
+  background-color: #f9f9f9;
+  margin: 70px auto 20px;
+  padding: 20px 30px 30px;
+  border-radius: 10px;
+  width: calc(100vw - 20px);
+  max-width: 1000px;
+}
+
+#flashes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20px);
+  background-color: #ffffff;
+  padding: 10px 15px;
+  margin: 0;
+  border-radius: 10px;
+}
+
+#close-flashes {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #000000;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+#close-flashes:hover {
+  color: red;
+}
+
+#flashes li {
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+/* General form styling */
+#survey_form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+#survey_form label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #a45b54;
+  cursor: pointer;
+  transition:
+    color 0.3s,
+    transform 0.3s;
+}
+
+#survey_form label:hover {
+  color: #a45b54;
+  transform: scale(1.05);
+}
+
+/* Input styling */
+#survey_form input[type="radio"] {
+  display: none;
+}
+
+#survey_form input[type="radio"] + label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 2px solid #2d2a28;
+  border-radius: 5px;
+  background-color: #c7d2d2;
+  color: #2d2a28;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+#survey_form input[type="radio"]:checked + label {
+  background-color: #2d2a28;
+  color: #c7d2d2;
+  border-color: #2d2a28;
+  transform: scale(1.05);
+}
+
+/* Textarea styling */
+#survey_form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+#survey_form textarea:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+/* Button styling */
+#survey_form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+
+#survey_form button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

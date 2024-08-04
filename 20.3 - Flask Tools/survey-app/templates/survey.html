@@ -1,2 +1,15 @@
-{% extends 'base.html' %} {% block title %} Homepage {% endblock %} {% block
-content %}
+{% extends 'base.html' %}
+
+<!---->
+{% block title %} {{ survey_type|title }} {% endblock %}
+
+<!---->
+{% block content %}
+
+<h1>{{ survey_info.title|title }}</h1>
+
+<p>{{ survey_info.instructions }}</p>
+
+<a href="/survey/{{survey_type}}/questions/0" class="button">Start</a>
+<!---->
+{% endblock %}

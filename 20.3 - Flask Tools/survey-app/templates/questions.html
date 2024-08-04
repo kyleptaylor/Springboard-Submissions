@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<!---->
+{% block title %} {{ survey_type|title }} {% endblock %}
+<!---->
+{% block content %}
+<!---->
+{% set title = survey_info.title|title %}
+<!---->
+{% set question = survey_info.questions[question_num].question %}
+<!---->
+{% set choices = survey_info.questions[question_num].choices %}
+<!---->
+{% set allow_text = survey_info.questions[question_num].allow_text %}
+
+<h1>{{ title }}</h1>
+
+<form
+  id="survey_form"
+  method="post"
+  action="/survey/{{ survey_type }}/answers/{{ question_num }}"
+>
+  <p>{{ question }}</p>
+  <!---->
+  {% if not allow_text %}
+  <!---->
+  {% for choice in choices %}
+  <input
+    type="radio"
+    id="{{ choice }}"
+    name="answer"
+    value="{{ choice }}"
+    required
+  />
+  <label for="{{ choice }}">{{ choice }}</label>
+  {% endfor %}
+  <!---->
+  {% else %}
+  <label for="text_response">Your answer:</label>
+  <textarea
+    id="text_response"
+    name="answer"
+    rows="5"
+    cols="50"
+    maxlength="200"
+    required
+  ></textarea>
+  {% endif %}
+  <br />
+  <!---->
+  {% if question_num + 1 < survey_info.questions|length %}
+  <!---->
+  {% set next_num = question_num + 1 %}
+  <button type="submit">Next</button>
+  {% else %}
+  <!---->
+  <button type="submit">Submit</button>
+  {% endif %}
+  <!---->
+</form>
+
+<!---->
+{% endblock %}
