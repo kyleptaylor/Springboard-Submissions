@@ -19,7 +19,6 @@ def render_board():
 
     if restart == 'true':
         board = boggle_game.make_board()
-        session.clear()
         session['board'] = board
         return jsonify({'board': board})
     
