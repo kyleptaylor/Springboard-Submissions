@@ -3,7 +3,7 @@ class BoggleGame {
     this.word = [];
     this.allWords = [];
     this.gameOver = false;
-    this.timerInterval = null; // Ensure the interval is a class property
+    this.timerInterval = null;
     this.initEventListeners();
     this.startTimer(60);
   }
@@ -63,7 +63,6 @@ class BoggleGame {
             score: currentScore,
           }),
         });
-
         this.handleResponse(response, currentScore);
       } catch (error) {
         console.error("Error:", error);
@@ -105,8 +104,6 @@ class BoggleGame {
 
   // Handle board restart
   handleRestart(response) {
-    console.log(response);
-
     const board = response.board || [];
     const $boggleBox = $(".boggle-box");
     $boggleBox.empty();

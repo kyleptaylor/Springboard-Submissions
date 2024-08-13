@@ -39,15 +39,16 @@ class FlaskTests(TestCase):
         with self.client:
             # Generate a board and store in session
             response = self.client.get('/boggle')
-            session['board'] = [['T', 'E', 'S', 'T'],
-                                ['A', 'B', 'C', 'D'],
-                                ['E', 'F', 'G', 'H'],
-                                ['I', 'J', 'K', 'L']]
+            session['board'] = [['T', 'E', 'S', 'T', 'O'],
+                                ['A', 'B', 'C', 'D', 'E'],
+                                ['E', 'F', 'G', 'H', 'I'],
+                                ['I', 'J', 'K', 'L', 'M'],
+                                ['A', 'O', 'D', 'Y', 'T']]
+
 
             # Test a valid word
             response = self.client.post('/answer', json={
-                'word': 'test',
-                'words': [],
+                'word': 'test'
             })
             json_response = response.get_json()
             self.assertEqual(json_response['result'], 'ok')
