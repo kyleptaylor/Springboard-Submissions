@@ -42,7 +42,7 @@ function sortedFrequency(arr, target) {
 
   firstIdx = findFirst();
 
-  if (firstIdx === -1) return 0;
+  if (firstIdx === -1) return -1;
 
   left = 0;
   right = arr.length - 1;
