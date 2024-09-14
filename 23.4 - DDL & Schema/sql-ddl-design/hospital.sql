@@ -1,4 +1,7 @@
-DROP TABLE hospital_db;
+-- from the terminal run:
+-- psql < hospital.sql
+
+DROP DATABASE IF EXISTS hospital_db;
 CREATE DATABASE hospital_db;
 \c hospital_db;
 
@@ -36,10 +39,10 @@ CREATE TABLE patient_diagnoses (
 
 INSERT INTO doctors (first_name, last_name) VALUES
 ('John', 'Doe'),
-('Sarah', 'Connor'),
-('Gregory', 'House'),
+('Heinz', 'Doofenshmirtz'),
+('Joseph', 'Nefario'),
 ('Emily', 'Blunt'),
-('Michael', 'Clark');
+('Otto', 'Octavius');
 
 INSERT INTO patients (first_name, last_name) VALUES
 ('Anna', 'Smith'),
