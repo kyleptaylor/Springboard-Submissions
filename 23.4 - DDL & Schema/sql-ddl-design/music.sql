@@ -2,9 +2,7 @@
 -- psql < music.sql
 
 DROP DATABASE IF EXISTS music;
-
 CREATE DATABASE music;
-
 \c music
 
 CREATE TABLE songs
