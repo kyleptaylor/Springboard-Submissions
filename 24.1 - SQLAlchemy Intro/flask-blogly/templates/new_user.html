@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}New User - Blogly{% endblock %} {%
+block body %}
+<h2>Create New User</h2>
+<form class="form" action="/new-user" method="POST">
+  <label for="first_name">First Name:</label>
+  <input
+    type="text"
+    id="first_name"
+    name="first_name"
+    placeholder="First Name"
+  />
+
+  <label for="last_name">Last Name:</label>
+  <input type="text" id="last_name" name="last_name" placeholder="Last Name" />
+
+  <label for="image_url">Profile Image URL:</label>
+  <input
+    type="url"
+    id="image_url"
+    name="image_url"
+    placeholder="Profile Image Url"
+  />
+
+  <button class="btn" type="submit">Create User</button>
+</form>
+{% endblock %}

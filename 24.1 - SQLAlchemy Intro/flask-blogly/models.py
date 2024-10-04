@@ -33,3 +33,8 @@ class User(db.Model):
     image_url = db.Column(db.String, 
                           nullable=True,
                           default="https://lastfm.freetls.fastly.net/i/u/770x0/5342164d2994e7f3e0542905546defa5.jpg#5342164d2994e7f3e0542905546defa5")
+    
+    def delete_user(self):
+        """Deletes the current user instance from the database."""
+        db.session.delete(self)
+        db.session.commit()

@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}{{ user.first_name }} - Blogly{%
+endblock %} {% block body %}
+<div class="flex-section">
+  <img class="user-pic" src="{{ user.image_url }}" />
+  <div class="user-info">
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <div class="btn-box">
+      <form
+        action="/delete-user/{{ user.id }}"
+        method="POST"
+        style="display: inline"
+      >
+        <button type="submit" class="btn">Delete User</button>
+      </form>
+      <a href="/edit-user/{{ user.id }}" class="btn">Edit User</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
