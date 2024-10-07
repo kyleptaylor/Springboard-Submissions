@@ -1,8 +1,22 @@
-{% extends "base.html" %} {% block title %}Home - Blogly{% endblock %} {% block
-body %}
+{% extends "base.html" %} {% block title %} Home - Blogly {% endblock %} {%
+block body %}
 <h1>Welcome to Blogly!</h1>
 <p>
   This is the homepage where you can find the latest blog posts and updates.
 </p>
 
+<div class="flex-section-row">
+  <h2>All Posts</h2>
+  <div>
+    <ul>
+      {% for post in all_posts %}
+      <li>
+        <a href="/users/{{ post.user.id }}/posts/{{ post.id }}"
+          >{{ post.title }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 {% endblock %}

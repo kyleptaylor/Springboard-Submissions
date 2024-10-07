@@ -14,6 +14,11 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+h1 {
+  margin: 20px 0 0;
 }
 
 .blody-block {
@@ -59,6 +64,7 @@ nav a:hover {
   text-decoration: none;
   border: 1px solid var(--primary-green);
   padding: 10px 20px;
+  margin: 20px 0 0;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
@@ -70,7 +76,7 @@ nav a:hover {
   color: #ffffff;
 }
 
-.flex-section {
+.flex-section-row {
   width: 100%;
   height: 100%;
   display: flex;
@@ -78,6 +84,13 @@ nav a:hover {
   justify-content: center;
   align-items: flex-start;
   padding: 2em;
+}
+
+.flex-section-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-info {

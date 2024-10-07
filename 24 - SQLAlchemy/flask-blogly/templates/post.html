@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}{{ post.title }} - Blogly{% endblock
+%} {% block body %}
+<div class="flex-section-row">
+  <div class="post-info">
+    <h1>{{ post.title }}</h1>
+    <p><em>{{ post.created_at}}</em></p>
+    <p>
+      Created by
+      <a href="/users/{{ user.id }}"
+        >{{ post.user.first_name }} {{ post.user.last_name }}</a
+      >
+    </p>
+    <p>{{ post.content }}</p>
+    <div class="btn-box">
+      <form>
+        <button
+          class="btn"
+          formaction="/users/{{ user.id }}/posts/{{ post.id }}/edit-post"
+          formmethod="GET"
+        >
+          Edit Post
+        </button>
+        <button
+          class="btn"
+          formaction="/users/{{ user.id }}/posts/{{ post.id }}/delete-post"
+          formmethod="POST"
+        >
+          Delete Post
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
