@@ -69,3 +69,16 @@ class Post(db.Model):
     def __repr__(self):
         p = self
         return f"<Post(id={p.id}, title={p.title}, user_id={p.user_id})>"
+
+class Tag(db.Model):
+    ''' Tag'n Stuff '''
+
+    __tablename__ = 'tag'
+
+    id = db.Column(db.Integer, 
+                    primary_key=True,
+                    autoincrement=True)
+
+    name = db.Column(db.Text,
+                    nullable=False, 
+                    unique=True)
