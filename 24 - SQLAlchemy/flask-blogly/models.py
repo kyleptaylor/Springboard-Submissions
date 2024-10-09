@@ -73,7 +73,7 @@ class Post(db.Model):
 class Tag(db.Model):
     ''' Tag'n Stuff '''
 
-    __tablename__ = 'tag'
+    __tablename__ = 'tags'
 
     id = db.Column(db.Integer, 
                     primary_key=True,
@@ -82,3 +82,11 @@ class Tag(db.Model):
     name = db.Column(db.Text,
                     nullable=False, 
                     unique=True)
+
+class PostTag(db.Model):
+    ''' Through table for connection from post to tag '''
+
+    __tablename__ = 'post_tag'
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
