@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}{{ tag.name }} - Blogly{% endblock %}
+{% block body %}
+<h1>{{ tag.name }} Tag</h1>
+<div class="flex-section-row">
+  <div class="flex-section-col">
+    <h2>{{ tag.name }} Related Posts</h2>
+    <ul class="post-list">
+      {% for post in tag.posts %}
+      <li class="post-item">
+        <a
+          class="post-link"
+          href="/users/{{ post.user_id }}/posts/{{ post.id }}"
+          >{{ post.title }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="flex-section-col">
+    <div class="btn-box">
+      <form>
+        <button
+          class="btn"
+          formaction="/tags/{{ tag.id }}/delete-tag"
+          formmethod="POST"
+        >
+          Delete Tag
+        </button>
+        <button
+          class="btn"
+          formaction="/tags/{{ tag.id }}/edit-tag"
+          formmethod="GET"
+        >
+          Edit Tag
+        </button>
+        <button class="btn" formaction="/tags" formmethod="GET">
+          See All Tags
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

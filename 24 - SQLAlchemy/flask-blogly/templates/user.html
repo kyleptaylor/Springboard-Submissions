@@ -1,46 +1,52 @@
 {% extends "base.html" %} {% block title %}{{ user.first_name }} - Blogly{%
 endblock %} {% block body %}
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
 <div class="flex-section-row">
-  <div class="user-info">
-    <img class="user-pic" src="{{ user.image_url }}" />
-    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    <div class="btn-box">
+  <div class="flex-section-col">
+    <div class="user-info">
+      <img class="user-pic" src="{{ user.image_url }}" />
+      <div class="btn-box">
+        <form>
+          <button
+            class="btn"
+            formaction="/delete-user/{{ user.id }}"
+            formmethod="POST"
+          >
+            Delete User
+          </button>
+          <button
+            class="btn"
+            formaction="/edit-user/{{ user.id }}"
+            formmethod="GET"
+          >
+            Edit User
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="flex-section-col">
+    <div class="user-posts">
+      <h2>Posts by {{ user.first_name }}</h2>
+      <ul class="post-list">
+        {% for post in posts %}
+        <li class="post-item">
+          <a class="post-link" href="/users/{{ user.id }}/posts/{{ post.id }}"
+            >{{ post.title }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
       <form>
         <button
           class="btn"
-          formaction="/delete-user/{{ user.id }}"
-          formmethod="POST"
-        >
-          Delete User
-        </button>
-        <button
-          class="btn"
-          formaction="/edit-user/{{ user.id }}"
+          formaction="/users/{{ user.id }}/new-post"
           formmethod="GET"
         >
-          Edit User
+          New Post
         </button>
       </form>
     </div>
-  </div>
-  <div class="user-posts">
-    <h2>Posts by {{ user.first_name }}</h2>
-    <ul>
-      {% for post in posts %}
-      <li>
-        <a href="/users/{{ user.id }}/posts/{{ post.id }}">{{ post.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    <form>
-      <button
-        class="btn"
-        formaction="/users/{{ user.id }}/new-post"
-        formmethod="GET"
-      >
-        New Post
-      </button>
-    </form>
   </div>
 </div>
 {% endblock %}

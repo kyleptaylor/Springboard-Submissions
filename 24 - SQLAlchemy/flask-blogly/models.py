@@ -58,6 +58,9 @@ class Post(db.Model):
 
     user = db.relationship('User', backref="posts")
 
+    # Through table relationship:
+    tags = db.relationship('Tag', secondary='post_tag', backref='posts')
+
     @classmethod
     def get_all_posts(cls):
         return cls.query.all()
@@ -82,11 +85,20 @@ class Tag(db.Model):
     name = db.Column(db.Text,
                     nullable=False, 
                     unique=True)
-
+    
+    @classmethod
+    def get_all_tags(cls):
+        return cls.query.all()
+    
 class PostTag(db.Model):
     ''' Through table for connection from post to tag '''
 
     __tablename__ = 'post_tag'
 
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
-    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+    post_id = db.Column(db.Integer, 
+                        db.ForeignKey('posts.id'), 
+                        primary_key=True)
+    
+    tag_id = db.Column(db.Integer, 
+                       db.ForeignKey('tags.id'), 
+                       primary_key=True)

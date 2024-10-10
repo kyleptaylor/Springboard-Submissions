@@ -1,16 +1,20 @@
 {% extends "base.html" %} {% block title %}Users - Blogly{% endblock %} {% block
 body %}
 <h1>Blogly Users</h1>
-<ul>
-  {% for user in users %}
-  <li>
-    <a href="/users/{{ user.id }}"
-      >{{ user.first_name }} {{ user.last_name }}</a
-    >
-  </li>
-  {% endfor %}
-</ul>
-
-<a href="/new-user" class="btn">Add New User</a>
-
+<div class="flex-section-row">
+  <div class="flex-section-col">
+    <ul class="user-list">
+      {% for user in users %}
+      <li class="user-item">
+        <a class="user-link" href="/users/{{ user.id }}"
+          >{{ user.first_name }} {{ user.last_name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="flex-section-col">
+    <a href="/new-user" class="btn">Add New User</a>
+  </div>
+</div>
 {% endblock %}

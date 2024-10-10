@@ -11,11 +11,12 @@ def seed_data():
     db.create_all()  # Create all tables
 
     # Create sample users
-    user1 = User(first_name="Shrek", last_name="Ogre")
-    user2 = User(first_name="Fiona", last_name="Ogre")
-    user3 = User(first_name="Donkey", last_name="Talking")
+    user1 = User(first_name="Shrek", last_name="Ogre", image_url='https://lastfm.freetls.fastly.net/i/u/770x0/5342164d2994e7f3e0542905546defa5.jpg#5342164d2994e7f3e0542905546defa5')
+    user2 = User(first_name="Fiona", last_name="Ogre", image_url='https://static1.srcdn.com/wordpress/wp-content/uploads/2024/09/fiona-in-ogre-form-looking-surprised-in-shrek-forever-after.jpg')
+    user3 = User(first_name="Donkey", last_name="Talking", image_url='https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2Fc963f918-05a5-11e7-aa5b-6bb07f5c8e12?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1')
+    user4 = User(first_name="Lord", last_name="Farquaad", image_url='https://www.dictionary.com/e/wp-content/uploads/2018/03/Lord-Farquaad.jpg')
 
-    db.session.add_all([user1, user2, user3])
+    db.session.add_all([user1, user2, user3, user4])
     db.session.commit()
 
     # Create sample posts
@@ -38,7 +39,7 @@ def seed_data():
     post_tag1 = PostTag(post_id=post1.id, tag_id=tag1.id)
     post_tag2 = PostTag(post_id=post2.id, tag_id=tag2.id)
     post_tag3 = PostTag(post_id=post3.id, tag_id=tag3.id)
-    post_tag4 = PostTag(post_id=post1.id, tag_id=tag2.id)  # Shrek's adventure is also a story
+    post_tag4 = PostTag(post_id=post1.id, tag_id=tag2.id)
 
     db.session.add_all([post_tag1, post_tag2, post_tag3, post_tag4])
     db.session.commit()

@@ -23,7 +23,8 @@ db.create_all()
 def show_home():
     """ Display homepage """
     all_posts = Post.get_all_posts()
-    return render_template('home.html', all_posts=all_posts)
+    all_tags = Tag.get_all_tags()
+    return render_template('home.html', all_posts=all_posts, all_tags=all_tags)
 
 # USER ROUTES
 
@@ -154,3 +155,65 @@ def delete_post(user_id, post_id):
     db.session.commit()
 
     return redirect(f'/users/{user_id}')
+
+# TAG ROUTES
+
+@app.route('/tags/<int:tag_id>')
+def show_tag(tag_id):
+    """ Display tag and associated posts """
+    tag = Tag.query.get_or_404(tag_id)
+    return render_template('tag.html', tag=tag)
+
+@app.route('/tags')
+def show_all_tags():
+    """ Display all tags """
+    tags = Tag.get_all_tags()
+    return render_template('tags.html', tags=tags)
+
+@app.route('/new-tag')
+def show_new_tag_form():
+    """ Display tag form """
+    return render_template('new_tag.html')
+
+@app.route('/new-tag', methods=["POST"])
+def new_tag():
+    # Get the form data
+    tag_name = request.form["tag_name"]
+
+    new_tag = Tag(name=tag_name)
+    db.session.add(new_tag)
+    db.session.commit()
+
+    return redirect('/tags')
+
+@app.route('/tags/<int:tag_id>/edit-tag')
+def show_edit_tag_form(tag_id):
+    """ Display tag form """
+    tag = Tag.query.get_or_404(tag_id)
+    return render_template('edit_tag.html', tag=tag)
+
+@app.route('/tags/<int:tag_id>/edit-tag', methods=["POST"])
+def edit_tag(tag_id):
+
+    # Get the current tag
+    current_tag = Tag.query.get_or_404(tag_id)
+
+    # Get the form data
+    tag_name = request.form["tag_name"]
+    
+    current_tag.name = tag_name
+
+    db.session.add(current_tag)
+    db.session.commit()
+
+    return redirect('/tags')
+
+@app.route('/tags/<int:tag_id>/delete-tag', methods=["POST"])
+def delete_tag(tag_id):
+
+    # Get the current tag
+    tag = Tag.query.get_or_404(tag_id)
+    db.session.delete(tag)
+    db.session.commit()
+
+    return redirect('/tags')

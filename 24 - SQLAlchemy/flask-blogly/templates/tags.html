@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Tags - Blogly{% endblock %} {% block
+body %}
+<h1>Blogly Tags</h1>
+<div class="flex-section-row">
+  <div class="flex-section-col">
+    <ul class="tag-list">
+      {% for tag in tags %}
+      <li class="tag">
+        <a href="/tags/{{ tag.id }}">{{ tag.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="flex-section-col">
+    <a href="/new-tag" class="btn">Add New Tag</a>
+  </div>
+</div>
+{% endblock %}

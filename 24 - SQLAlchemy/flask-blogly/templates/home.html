@@ -1,22 +1,30 @@
 {% extends "base.html" %} {% block title %} Home - Blogly {% endblock %} {%
 block body %}
-<h1>Welcome to Blogly!</h1>
-<p>
-  This is the homepage where you can find the latest blog posts and updates.
-</p>
-
-<div class="flex-section-row">
-  <h2>All Posts</h2>
-  <div>
-    <ul>
-      {% for post in all_posts %}
-      <li>
-        <a href="/users/{{ post.user.id }}/posts/{{ post.id }}"
-          >{{ post.title }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
+<div class="container">
+  <h1>Welcome to Blogly!</h1>
+  <p class="intro-text">
+    This is the homepage where you can find the latest blog posts and updates.
+  </p>
+  <div class="flex-section-row">
+    <div class="flex-section-col">
+      <h2>All Posts</h2>
+      <div class="post-list-wrapper">
+        <ul class="post-list">
+          {% if all_posts %} {% for post in all_posts %}
+          <li class="post-item">
+            <a
+              href="/users/{{ post.user.id }}/posts/{{ post.id }}"
+              class="post-link"
+            >
+              {{ post.title }}
+            </a>
+          </li>
+          {% endfor %} {% else %}
+          <p>No posts available yet.</p>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
