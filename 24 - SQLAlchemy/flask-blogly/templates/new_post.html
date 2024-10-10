@@ -5,7 +5,7 @@ block body %}
   <label for="title">Post Title:</label>
   <input type="text" id="title" name="title" placeholder="Title" />
 
-  <label for="content">Post Content</label>
+  <label for="content">Post Content:</label>
   <textarea
     rows="5"
     cols="33"
@@ -13,6 +13,19 @@ block body %}
     name="content"
     placeholder="Content"
   ></textarea>
+
+  <label>Select Tags:</label>
+  {% for tag in tags %}
+  <div class="checkbox-group">
+    <input
+      type="checkbox"
+      id="{{ tag.name }}_tag"
+      name="tags"
+      value="{{ tag.id }}"
+    />
+    <label for="{{ tag.name }}_tag">{{ tag.name }}</label>
+  </div>
+  {% endfor %}
 
   <button class="btn" type="submit">Create Post</button>
 </form>

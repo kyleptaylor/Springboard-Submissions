@@ -109,7 +109,8 @@ def show_post(user_id, post_id):
 @app.route('/users/<int:user_id>/new-post')
 def show_new_post_form(user_id):
     """ Display post form """
-    return render_template('new_post.html', user_id=user_id)
+    tags = Tag.get_all_tags()
+    return render_template('new_post.html', user_id=user_id, tags=tags)
 
 @app.route('/users/<int:user_id>/new-post', methods=["POST"])
 def new_post(user_id):
@@ -117,9 +118,19 @@ def new_post(user_id):
     # Get the form data
     title = request.form["title"]
     content = request.form["content"]
+    tag_ids = request.form.getlist('tags')
 
+    # Create new post and add it to db
     new_post = Post(title=title, content=content, user_id=user_id)
     db.session.add(new_post)
+    db.session.commit()
+
+    # Loop over tags and add to db
+    for tag_id in tag_ids:
+        tag = Tag.query.get(tag_id)  # Retrieve the Tag object by ID
+        if tag:
+            new_post.tags.append(tag)
+
     db.session.commit()
 
     return redirect(f'/users/{user_id}/posts/{new_post.id}')
@@ -129,7 +140,8 @@ def show_edit_post_form(user_id, post_id):
     """ Display edit post form """
     user = User.query.get_or_404(user_id)
     post = Post.query.get_or_404(post_id)
-    return render_template('edit_post.html', user=user, post=post )
+    tags = Tag.get_all_tags()
+    return render_template('edit_post.html', user=user, post=post, tags=tags)
 
 @app.route('/users/<int:user_id>/posts/<int:post_id>/edit-post', methods=["POST"])
 def edit_post(user_id, post_id):
@@ -139,9 +151,20 @@ def edit_post(user_id, post_id):
     # Get the form data
     title = request.form["title"]
     content = request.form["content"]
+    tag_ids = request.form.getlist('tags')
 
     current_post.title = title
     current_post.content = content
+
+    db.session.commit()
+
+    current_post.tags.clear()
+
+    # Loop over tags and add to db
+    for tag_id in tag_ids:
+        tag = Tag.query.get(tag_id)  # Retrieve the Tag object by ID
+        if tag:
+            current_post.tags.append(tag)
 
     db.session.commit()
 
