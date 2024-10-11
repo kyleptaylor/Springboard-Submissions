@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}New Post - Blogly{% endblock %} {%
 block body %}
-<h2>Create New Post</h2>
+<h1>Create New Post</h1>
 <form class="form" action="/users/{{ user_id }}/new-post" method="POST">
   <label for="title">Post Title:</label>
   <input type="text" id="title" name="title" placeholder="Title" />

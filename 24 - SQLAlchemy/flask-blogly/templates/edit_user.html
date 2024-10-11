@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %} User - Blogly{% endblock %} {% block
 body %}
-<h2>Edit {{ user.first_name }}</h2>
+<h1>Edit {{ user.first_name }}</h1>
 <form class="form" action="/edit-user/{{ user.id }}" method="POST">
   <label for="first_name">First Name:</label>
   <input

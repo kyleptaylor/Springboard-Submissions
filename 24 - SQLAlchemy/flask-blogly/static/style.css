@@ -13,10 +13,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin: 38px 0 0 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,6 +32,7 @@ h2 {
 }
 
 .body-block {
+  height: 100%;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
@@ -98,20 +97,45 @@ nav a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   padding: 2em;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 800px) {
+  .flex-section-row {
+    flex-direction: column;
+  }
+}
+
 .flex-section-col {
-  flex: 0 0 50%;
+  flex: 0 0 calc(50% - 1em);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   padding: 2em;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+@media (max-width: 800px) {
+  .flex-section-col {
+    border-radius: 8px 8px 0 0;
+  }
+  .flex-section-col:nth-of-type(2) {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@media (min-width: 801px) {
+  .flex-section-col:nth-of-type(2) {
+    align-items: flex-end;
+    text-align: end;
+    margin-left: 2em;
+  }
 }
 
 .user-info {
