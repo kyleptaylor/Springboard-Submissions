@@ -44,4 +44,9 @@ def add_pet():
         return redirect ('/')
     else:
         return render_template('add_pet.html', form = form)
-    
+
+@app.route('/pet/<int:pet_id>')
+def show_pet(pet_id):
+    """ Show details for pet based on id """
+    pet = Pet.query.get_or_404(pet_id)
+    return render_template('pet.html', pet=pet)
