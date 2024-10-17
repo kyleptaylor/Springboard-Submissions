@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!--  -->
+{% block title %} Home - Adopt a Pet {% endblock %}
+<!--  -->
+{% block body %}
+<h1 class="text-center mb-4">Adopt a Pet</h1>
+<div
+  class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 image-grid"
+>
+  {% for pet in pets %}
+  <div class="col">
+    {% if pet.photo_url %}
+    <img
+      src="{{ pet.photo_url }}"
+      class="img-fluid rounded"
+      alt="{{ pet.name }}"
+    />
+    {% else %}
+    <img
+      src="https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+      class="img-fluid rounded"
+      alt="{{ pet.name }}"
+    />
+    {% endif %}
+    <h5 class="text-container text-center">
+      {{ pet.name }} {% if pet.available %}
+      <span class="text-success">is avaliable!</span>
+      {% else %}
+      <span class="text-danger">is not avaliable</span>
+      {% endif %}
+    </h5>
+  </div>
+  {% endfor %}
+</div>
+<div class="text-left mt-4 mb-3">
+  <a href="/add" class="btn btn-primary w-auto">Add New Pet</a>
+</div>
+<!--  -->
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+<!--  -->
+{% block title %} Home - Adopt a Pet {% endblock %}
+<!--  -->
+{% block body %}
+
+<h1 class="text-center mb-4">Adopt a Pet</h1>
+<form method="POST">
+  {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
+  'hidden' %}
+  <p>{{ field.label }} {{ field }}</p>
+  {% for err in field.errors %} {{ err }} {% endfor %} {% endfor %}
+  <button>Submit</button>
+</form>
+
+{% endblock %}
