@@ -4,9 +4,9 @@
 
 {% block body %}
   <h1 class="text-center mb-4">Adopt a Pet</h1>
-  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 image-grid">
+  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
     {% for pet in pets %}
-    <div class="col border rounded p-2">
+    <div class="col border rounded m-2 p-2">
       <h5 class="text-container text-center">
         {{ pet.name }} 
         {% if pet.available %}
@@ -37,7 +37,7 @@
     </div>
     {% endfor %}
   </div>
-  <div class="text-left mt-4 mb-3">
+  <div class="text-center mt-4 mb-3">
     <a href="/add" class="btn btn-primary w-auto">Add New Pet</a>
   </div>
 {% endblock %}
