@@ -3,41 +3,41 @@
 {% block title %} Home - Adopt a Pet {% endblock %}
 
 {% block body %}
-<h1 class="text-center mb-4">Adopt a Pet</h1>
-<div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 image-grid">
-  {% for pet in pets %}
-  <div class="col border rounded p-2">
-    <h5 class="text-container text-center">
-      {{ pet.name }} 
-      {% if pet.available %}
-        <span class="text-success">is available!</span>
-      {% else %}
-        <span class="text-danger">is not available</span>
-      {% endif %}
-    </h5>
-    <div class="col pet-img">
-      <div class="rounded mx-auto">
-        <a href="/pet/{{ pet.id }}">
-            <img 
-              src="{{ pet.photo_url }}" 
-              alt="{{ pet.name }}" 
-              class="img-fluid rounded" 
-              style="object-fit: cover;"
-              width="100%"
-              height="100%"
-            />
-          </a>
-          <div class="control-ui mt-2">
-            <a href="/pet/{{ pet.id }}" class="btn btn-sm btn-outline-secondary">View</a>
-            <a href="/pet/{{ pet.id }}" class="btn btn-sm btn-outline-warning">Edit</a>
-            <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+  <h1 class="text-center mb-4">Adopt a Pet</h1>
+  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 image-grid">
+    {% for pet in pets %}
+    <div class="col border rounded p-2">
+      <h5 class="text-container text-center">
+        {{ pet.name }} 
+        {% if pet.available %}
+          <span class="text-success">is available!</span>
+        {% else %}
+          <span class="text-danger">is not available</span>
+        {% endif %}
+      </h5>
+      <div class="col pet-img">
+        <div class="rounded mx-auto">
+          <a href="/pet/{{ pet.id }}">
+              <img 
+                src="{{ pet.photo_url }}" 
+                alt="{{ pet.name }}" 
+                class="img-fluid rounded" 
+                style="object-fit: cover;"
+                width="100%"
+                height="100%"
+              />
+            </a>
+            <div class="control-ui mt-2">
+              <a href="/pet/{{ pet.id }}" class="btn btn-sm btn-outline-secondary">View</a>
+              <a href="/pet/{{ pet.id }}/edit" class="btn btn-sm btn-outline-warning">Edit</a>
+              <a href="/pet/{{ pet.id }}/delete" class="btn btn-sm btn-outline-danger">Delete</a>
+          </div>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
-<div class="text-left mt-4 mb-3">
-  <a href="/add" class="btn btn-primary w-auto">Add New Pet</a>
-</div>
+  <div class="text-left mt-4 mb-3">
+    <a href="/add" class="btn btn-primary w-auto">Add New Pet</a>
+  </div>
 {% endblock %}

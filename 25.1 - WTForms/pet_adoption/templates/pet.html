@@ -3,5 +3,32 @@
 {% block title %} {{ pet.name }} - Adopt a Pet {% endblock %}
 
 {% block body %}
-
+    <div class="container d-flex justify-content-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <h1 class="text-center mb-1">{{ pet.name }} The {{ pet.species }}</h1>
+            {% if pet.available %}
+                <h2 class="text-center text-success">Avaliable! <small><i class="fa-solid fa-face-smile"></i></small></h2>
+            {% else %}
+                <h2 class="text-center text-danger">Unavailable <small><i class="fa-solid fa-skull-crossbones"></i></small></h2>
+            {% endif %}
+            <img 
+                src="{{ pet.photo_url }}" 
+                alt="{{ pet.name }}" 
+                class="img-fluid rounded mb-4 mt-2" 
+                style="object-fit: cover; width: 100%; height: auto;" 
+            />
+            {% if pet.age %}
+            <p class="text-left">Age: {{ pet.age }}yrs</p>
+            {% endif %}
+            {% if pet.notes %}
+                <p class="text-left">{{ pet.notes }}</p>
+            {% endif %}
+            <div class="mt-2">
+                <a href="/" class="btn btn-outline-primary">Go Back</a>
+                <a href="/pet/{{ pet.id }}/edit" class="btn btn-outline-warning">Edit</a>
+                <a href="/pet/{{ pet.id }}/delete" class="btn btn-outline-danger">Delete</a>
+            </div>
+        </div>
+        
+    </div>  
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import Flask , request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
-from forms import AddPetForm
+from forms import PetForm
 
 app = Flask(__name__)
 
@@ -23,9 +23,15 @@ def show_home():
     pets = Pet.query.all()
     return render_template('home.html', pets=pets)
 
+@app.route('/pet/<int:pet_id>')
+def show_pet(pet_id):
+    """ Show details for pet based on id """
+    pet = Pet.query.get_or_404(pet_id)
+    return render_template('pet.html', pet=pet)
+
 @app.route('/add', methods=['GET', 'POST'])
 def add_pet():
-    form = AddPetForm()
+    form = PetForm()
 
     if form.validate_on_submit():
         name = form.name.data
@@ -44,9 +50,35 @@ def add_pet():
         return redirect ('/')
     else:
         return render_template('add_pet.html', form = form)
-
-@app.route('/pet/<int:pet_id>')
-def show_pet(pet_id):
-    """ Show details for pet based on id """
+    
+@app.route('/pet/<int:pet_id>/edit', methods=['GET', 'POST'])
+def edit_pet(pet_id):
+    
     pet = Pet.query.get_or_404(pet_id)
-    return render_template('pet.html', pet=pet)
+    form = PetForm(obj=pet)
+
+    if form.validate_on_submit():
+        pet.name = name = form.name.data
+        pet.species = form.species.data
+        pet.photo_url = form.photo_url.data
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+        pet.notes = form.notes.data
+        pet.available = form.available.data
+
+        db.session.commit()
+
+        flash(f"Edited: {pet.name} the {pet.species}")
+        return redirect (f'/pet/{pet_id}')
+    else:
+        return render_template('edit_pet.html', form=form, pet=pet)
+    
+@app.route('/pet/<int:pet_id>/delete')
+def delete_pet(pet_id):
+    """ Delete details for pet based on id """
+    pet = Pet.query.get_or_404(pet_id)
+    db.session.delete(pet)
+    db.session.commit()
+    
+    flash(f"Deleted: {pet.name} the {pet.species}")
+    return redirect ('/')

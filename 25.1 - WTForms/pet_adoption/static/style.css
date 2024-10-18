@@ -9,3 +9,8 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.alert {
+  z-index: 10;
+  background-color: #ffffff;
+}

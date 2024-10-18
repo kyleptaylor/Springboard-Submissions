@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %} Add - Adopt a Pet {% endblock %}
+{% block title %} Edit {{ pet.name }} - Adopt a Pet {% endblock %}
 
 {% block body %}
-  <h1 class="text-center mb-4">Add a New Pet</h1>
+  <h1 class="text-center mb-4">Edit {{ pet.name }}</h1>
   <form method="POST">
     {{ form.hidden_tag() }}
     {% for field in form if field.widget.input_type != 'hidden' %}
@@ -21,7 +21,7 @@
       </div>
     {% endfor %}
     <div class="mt-5">
-      <button class="btn btn-success">Submit</button>
+      <button class="btn btn-success">Save</button>
       <a href="/" class="btn btn-outline-secondary">Go Back</a>
     </div>
   </form>

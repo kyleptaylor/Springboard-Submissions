@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, BooleanField, IntegerField, RadioField, SelectField
 from wtforms.validators import InputRequired, NumberRange, Optional, URL
 
-class AddPetForm(FlaskForm):
+class PetForm(FlaskForm):
 
     name = StringField('Pet Name', validators=[InputRequired(message="Name is Requiered")])
     # species = StringField('Pet Species', validators=[InputRequired(message="Species is Requiered")])
